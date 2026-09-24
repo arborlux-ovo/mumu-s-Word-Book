@@ -1,0 +1,377 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei", sans-serif;
+}
+body {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+/* ========== iconfont 第一步 @font-face ========== */
+@font-face {
+    font-family: 'iconfont';
+    src: url('iconfont.ttf?t=1790061296110') format('truetype');
+}
+/* ========== iconfont 第二步 基础样式 ========== */
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 36px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+/* ========== 全局单词本容器 固定尺寸 ========== */
+.word-book {
+    width: 1100px;
+    height: 940px;
+    border: 3px solid #333;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+}
+/* 顶部导航栏 */
+.nav-bar {
+    display: flex;
+    border-bottom: 2px solid #333;
+}
+.nav-item {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    background-color: #ffc8d8;
+    border-right:2px solid #333;
+    cursor:pointer;
+    transition: transform 0.12s;
+}
+.nav-item:active{
+    transform: scale(0.96);
+}
+.nav-item:last-child{
+    border-right:none;
+}
+.nav-item span{
+    font-size: 32px;
+    color:#555555;
+    text-decoration: none;
+    display:block;
+}
+/* 标题框 */
+.title-box{
+    margin:10px 20px;
+    border:2px solid #333;
+    border-radius:12px;
+    text-align:center;
+    padding:8px;
+}
+.title-box span{
+    font-size:48px;
+    color:#444;
+}
+/* 主体绿色区域 */
+.content-wrap{
+    background-color:#b8e9aa;
+    margin:0 10px 10px;
+    border:2px solid #333;
+    border-radius:12px;
+    height:720px;
+    padding:20px;
+}
+/* ========== 首页单词列表页面 ========== */
+#page-home{
+    display:block;
+}
+.two-col{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:8px;
+    height:100%;
+}
+.tab-label{
+    width: 280px;
+    background:#ffc8d8;
+    border:2px dashed #333;
+    border-radius:8px;
+    text-align:center;
+    padding:6px 0;
+    margin-bottom:20px;
+    cursor:pointer;
+    transition: transform 0.12s;
+}
+.tab-label:active{
+    transform: scale(0.96);
+}
+.tab-label span{
+    font-size:36px;
+    color:#555555;
+}
+.col-left{
+    border-right:2px dashed #333;
+    padding-right:15px;
+}
+.col-right{
+    padding-left:15px;
+}
+.word-row{
+    display:flex;
+    justify-content: space-between;
+    border-bottom:2px dashed #333;
+    height:80px;
+    align-items:center;
+    font-size:28px;
+    color:#333;
+}
+.check-mark{
+    font-size:36px;
+    color:#444;
+}
+.check-mark span{
+    cursor:pointer;
+}
+.check-mark span:active{
+    transform: scale(0.9);
+    display:inline-block;
+}
+/* ========== 添加新词页面 ========== */
+#page-add{
+    display:none;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+    padding:40px 60px;
+}
+.pink-item {
+    width: 80%;
+    background-color: #ffc8d8;
+    border: 3px solid #222;
+    border-radius: 20px;
+    font-size: 48px;
+    color: #444;
+    padding: 12px 24px;
+    text-align: center;
+    transition: transform 0.15s ease;
+    cursor:pointer;
+}
+.pink-item:active {
+    transform: scale(0.96);
+}
+.pink-input {
+    width: 80%;
+    text-align: left;
+    outline: none;
+    border:3px solid #222;
+    background:transparent;
+    border-radius:20px;
+    font-size:48px;
+    padding:12px 24px;
+}
+/* 重复输入 绿色边框样式 */
+.pink-input.duplicate{
+    border-color:green;
+}
+.btn-group {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+    padding-right: 40px;
+    margin-top:20px;
+}
+.btn-group .pink-item {
+    width: 220px;
+}
+/* ========== 总复习页面 ========== */
+#page-review{
+    display:none;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+.review-title{
+    width: 280px;
+    background:#ffc8d8;
+    border:2px dashed #333;
+    border-radius:8px;
+    text-align:center;
+    padding:6px 0;
+    margin-bottom:20px;
+}
+.review-title span{
+    font-size:36px;
+    color:#555555;
+}
+.review-word-container{
+    width:100%;
+    height:calc(100% - 80px);
+    overflow-y:auto;
+    padding:0 20px;
+}
+/* ========== 练习页面 ========== */
+#page-practice{
+    display:none;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    gap:24px;
+}
+.practice-title{
+    width: 280px;
+    background:#ffc8d8;
+    border:2px dashed #333;
+    border-radius:8px;
+    text-align:center;
+    padding:6px 0;
+}
+.practice-title span{
+    font-size:36px;
+    color:#555555;
+}
+.practice-buttons{
+    display:flex;
+    gap:30px;
+}
+.practice-btn{
+    width:200px;
+    background:#ffc8d8;
+    border: 3px solid #222;
+    border-radius:20px;
+    font-size:36px;
+    color:#444;
+    padding:10px;
+    cursor:pointer;
+    transition: transform 0.15s;
+}
+.practice-btn:active{
+    transform:scale(0.96);
+}
+.practice-card-wrap{
+    width:100%;
+    flex-grow:1;
+    overflow-y:auto;
+    padding:0 30px;
+}
+.practice-card{
+    background:#ffc8d8;
+    border:3px solid #222;
+    border-radius:16px;
+    font-size:32px;
+    color:#444;
+    text-align:center;
+    padding:20px;
+    margin-bottom:16px;
+    cursor:pointer;
+    transition: transform 0.12s;
+}
+.practice-card:active{
+    transform:scale(0.97);
+}
+
+/* ========== 右下角悬浮图标按钮 适配iconfont，居中 ========== */
+.contact-float{
+    position: fixed;
+    right:30px;
+    bottom:120px;
+    width:140px;
+    height:70px;
+    background:#ffc8d8;
+    border:3px solid #333;
+    border-radius:16px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition: transform 0.12s;
+    z-index:999;
+}
+.contact-float:active{
+    transform:scale(0.96);
+}
+.help-float{
+    position: fixed;
+    right:30px;
+    bottom:30px;
+    width:140px;
+    height:70px;
+    background:#ffc8d8;
+    border:3px solid #333;
+    border-radius:16px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition: transform 0.12s;
+    z-index:999;
+}
+.help-float:active{
+    transform:scale(0.96);
+}
+/* 弹窗遮罩层 */
+.mask{
+    position:fixed;
+    left:0;
+    top:0;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.4);
+    z-index:1000;
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+/* 联系弹窗盒子 */
+.contact-modal{
+    width:520px;
+    background:#fff;
+    border:3px solid #333;
+    border-radius:20px;
+    padding:40px;
+    text-align:center;
+}
+.contact-modal h3{
+    font-size:36px;
+    margin-bottom:30px;
+    color:#333;
+}
+.contact-modal p{
+    font-size:30px;
+    margin:16px 0;
+}
+/* 使用说明弹窗 */
+.help-modal{
+    width:700px;
+    background:#fff;
+    border:3px solid #333;
+    border-radius:20px;
+    padding:40px;
+}
+.help-modal h3{
+    font-size:36px;
+    margin-bottom:20px;
+    text-align:center;
+}
+.help-modal p{
+    font-size:26px;
+    line-height: 1.8;
+}
+.close-modal{
+    margin-top:30px;
+    width:180px;
+    padding:10px;
+    background:#ffc8d8;
+    border:3px solid #333;
+    border-radius:16px;
+    font-size:28px;
+    cursor:pointer;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+.close-modal:active{
+    transform:scale(0.96);
+}
